@@ -1,7 +1,10 @@
 import taskLayout from './taskLayot';
+import uniqid from 'uniqid';
 
-const addTask = (tasks) => {
+const addTask = (e, tasks) => {
+  const modal = e.target.closest('#exampleModal')
   const initialState = {
+    id: uniqid(),
     title: '',
     text: '',
     priority: '',
@@ -15,39 +18,28 @@ const addTask = (tasks) => {
   const lowPriorityInput = document.querySelector('#Low');
   const mediumPriorityInput = document.querySelector('#Medium');
   const HighPriorityInput = document.querySelector('#High');
-  taskInput.addEventListener('input', (e) => {
-    newTask.title = e.target.value
-  })
-  textInput.addEventListener('input', (e) => {
-    newTask.text = e.target.value
-  })
-  lowPriorityInput.addEventListener('change', (e) => {
-    newTask.priority = e.target.value
-  })
-  mediumPriorityInput.addEventListener('change', (e) => {
-    newTask.priority = e.target.value
-  })
-  HighPriorityInput.addEventListener('change', (e) => {
-    newTask.priority = e.target.value
-  })
-  document.querySelector('#add-task').addEventListener('click', (e) => {
-    const { title, text, priority } = newTask;
-    e.preventDefault()
-    if (title.length && text.length && priority.length) {
-      taskLayout(newTask);
-      const newTasksArray = [...tasks, newTask];
-      taskInput.value = '';
-      textInput.value = '';
-      lowPriorityInput.checked  = false;
-      mediumPriorityInput.checked  = false;
-      HighPriorityInput.checked  = false;
-      newTask = {
-        ...initialState
-      }
-      $('#exampleModal').modal('hide');
-      return newTasksArray;
+  newTask.title = taskInput.value;
+  newTask.text = textInput.value;
+  newTask.priority = lowPriorityInput.value;
+  newTask.priority = mediumPriorityInput.value;
+  newTask.priority = HighPriorityInput.value;
+  console.log(newTask)
+  const { title, text, priority } = newTask;
+  
+  if (title.length && text.length && priority.length) {
+    taskLayout(newTask);
+    const newTasksArray = [...tasks, newTask];
+    taskInput.value = '';
+    textInput.value = '';
+    lowPriorityInput.checked  = false;
+    mediumPriorityInput.checked  = false;
+    HighPriorityInput.checked  = false;
+    newTask = {
+      ...initialState
     }
-  })
+    $('#exampleModal').modal('hide');
+    return newTasksArray;
+  }
 }
 
 export default addTask;

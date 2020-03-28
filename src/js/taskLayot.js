@@ -1,5 +1,5 @@
 const taskLayout = (task) => {
-  const { title, text, priority, isCompleted } = task;
+  const { title, text, priority, isCompleted, id } = task;
   const dateOfCreation = new Date();
   const changeableBlock = !isCompleted
     ? document.querySelector('#currentTasks')
@@ -9,7 +9,7 @@ const taskLayout = (task) => {
     priority === 'Low' ? 'low-priority' :
     '';
   changeableBlock.insertAdjacentHTML('beforeend', `
-    <li class="list-group-item d-flex w-100 mb-2">
+    <li class="list-group-item d-flex w-100 mb-2" id="${id}">
         <div class="w-100 mr-2">
             <div class="d-flex w-100 justify-content-between">
                 <h5 class="mb-1 ${priorityClass}">${title}</h5>
@@ -27,7 +27,7 @@ const taskLayout = (task) => {
             <div class="dropdown-menu p-2 flex-column" aria-labelledby="dropdownMenuItem1">
                 <button type="button" class="btn btn-success w-100">Complete</button>
                 <button type="button" class="btn btn-info w-100 my-2">Edit</button>
-                <button type="button" class="btn btn-danger w-100">Delete</button>
+                <button type="button" class="btn btn-danger w-100" id="delete">Delete</button>
             </div>
         </div>
     </li>
