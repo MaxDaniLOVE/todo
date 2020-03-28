@@ -1,6 +1,7 @@
 import addTask from './js/addTask';
 import taskLayout from './js/taskLayot';
 import deleteItem from './js/deleteItem';
+import completeItem from './js/completeItem';
 import loadingJSON from './js/loadingJSON';
 import uniqid from 'uniqid';
 
@@ -28,6 +29,9 @@ const currentTasksBlock = document.getElementById('currentTasks');
 currentTasksBlock.addEventListener('click', (e) => {
   if (e.target.id === 'delete') {
     tasks = deleteItem(e, tasks);
+  }
+  if (e.target.id === 'complete') {
+    tasks = completeItem(e, tasks);
   }
 })
 

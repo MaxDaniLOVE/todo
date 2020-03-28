@@ -8,6 +8,7 @@ const taskLayout = (task) => {
     priority === 'Medium' ? 'medium-priority' :
     priority === 'Low' ? 'low-priority' :
     '';
+  const btnsVisibilityClass = isCompleted ? 'hidden' : '';
   changeableBlock.insertAdjacentHTML('beforeend', `
     <li class="list-group-item d-flex w-100 mb-2" id="${id}">
         <div class="w-100 mr-2">
@@ -25,8 +26,8 @@ const taskLayout = (task) => {
                 <i class="fas fa-ellipsis-v" aria-hidden="true"></i>
             </button>
             <div class="dropdown-menu p-2 flex-column" aria-labelledby="dropdownMenuItem1">
-                <button type="button" class="btn btn-success w-100">Complete</button>
-                <button type="button" class="btn btn-info w-100 my-2">Edit</button>
+                <button type="button" class="btn btn-success w-100 ${btnsVisibilityClass}" id="complete">Complete</button>
+                <button type="button" class="btn btn-info w-100 my-2 ${btnsVisibilityClass}" id="edit">Edit</button>
                 <button type="button" class="btn btn-danger w-100" id="delete">Delete</button>
             </div>
         </div>
