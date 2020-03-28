@@ -44,6 +44,7 @@ const addTask = (tasks) => {
       newTask = {
         ...initialState
       }
+      $('#exampleModal').modal('hide');
       return newTasksArray;
     }
   })

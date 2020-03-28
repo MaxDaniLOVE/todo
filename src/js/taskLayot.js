@@ -4,11 +4,15 @@ const taskLayout = (task) => {
   const changeableBlock = !isCompleted
     ? document.querySelector('#currentTasks')
     : document.querySelector('#completedTasks');
+  const priorityClass = (priority === 'High') ? 'high-priority' :
+    priority === 'Medium' ? 'medium-priority' :
+    priority === 'Low' ? 'low-priority' :
+    '';
   changeableBlock.insertAdjacentHTML('beforeend', `
     <li class="list-group-item d-flex w-100 mb-2">
         <div class="w-100 mr-2">
             <div class="d-flex w-100 justify-content-between">
-                <h5 class="mb-1">${title}</h5>
+                <h5 class="mb-1 ${priorityClass}">${title}</h5>
                 <div>
                     <small class="mr-2">${priority} priority</small>
                     <small>${dateOfCreation.toLocaleString()}</small>
