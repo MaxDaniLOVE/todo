@@ -1,5 +1,12 @@
 import addTask from './js/addTask';
 
-document.getElementById('add-task').addEventListener('click', addTask)
+let tasks = [
+  {
+    title: 'Title',
+    text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquid eaque eligendi error eveniet nostrum nulla pariatur repudiandae, veniam. Provident.',
+    priority: 'high',
+    isCompleted: false
+  }
+]
 
-console.log('app.js')
+tasks = addTask(tasks);
