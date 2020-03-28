@@ -1,6 +1,7 @@
 import addTask from './js/addTask';
 import taskLayout from './js/taskLayot';
 import deleteItem from './js/deleteItem';
+import loadingJSON from './js/loadingJSON';
 import uniqid from 'uniqid';
 
 const initialTask = {
@@ -28,4 +29,8 @@ currentTasksBlock.addEventListener('click', (e) => {
   if (e.target.id === 'delete') {
     tasks = deleteItem(e, tasks);
   }
+})
+
+document.getElementById('load-btn').addEventListener('click', (e) => {
+  e.target.href = loadingJSON(tasks)
 })

@@ -23,7 +23,7 @@ const addTask = (e, tasks) => {
   newTask.priority = lowPriorityInput.value;
   newTask.priority = mediumPriorityInput.value;
   newTask.priority = HighPriorityInput.value;
-  console.log(newTask)
+
   const { title, text, priority } = newTask;
   
   if (title.length && text.length && priority.length) {
