@@ -25,6 +25,7 @@ document.querySelector('#add-task').addEventListener('click', (e) => {
 })
 
 const currentTasksBlock = document.getElementById('currentTasks');
+const completedTasksBlock = document.getElementById('completedTasks');
 
 currentTasksBlock.addEventListener('click', (e) => {
   if (e.target.id === 'delete') {
@@ -32,6 +33,12 @@ currentTasksBlock.addEventListener('click', (e) => {
   }
   if (e.target.id === 'complete') {
     tasks = completeItem(e, tasks);
+  }
+})
+
+completedTasks.addEventListener('click', (e) => {
+  if (e.target.id === 'delete') {
+    tasks = deleteItem(e, tasks);
   }
 })
 
