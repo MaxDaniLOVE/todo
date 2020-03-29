@@ -10,7 +10,8 @@ const initialTask = {
   title: 'Title',
   text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquid eaque eligendi error eveniet nostrum nulla pariatur repudiandae, veniam. Provident.',
   priority: 'High',
-  isCompleted: false
+  isCompleted: false,
+  dateOfCreation: new Date(),
 }
 
 let tasks = [

@@ -2,13 +2,13 @@ import taskLayout from './taskLayot';
 import uniqid from 'uniqid';
 
 const addTask = (e, tasks) => {
-  const modal = e.target.closest('#exampleModal')
   const initialState = {
     id: uniqid(),
     title: '',
     text: '',
     priority: '',
-    isCompleted: false
+    isCompleted: false,
+    dateOfCreation: new Date(),
   }
   let newTask = {
     ...initialState

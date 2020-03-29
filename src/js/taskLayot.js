@@ -1,6 +1,5 @@
 const taskLayout = (task) => {
-  const { title, text, priority, isCompleted, id } = task;
-  const dateOfCreation = new Date();
+  const { title, text, priority, isCompleted, id, dateOfCreation } = task;
   const changeableBlock = !isCompleted
     ? document.querySelector('#currentTasks')
     : document.querySelector('#completedTasks');
