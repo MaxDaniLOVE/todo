@@ -23,9 +23,11 @@ const addTask = (e, tasks) => {
   const colorInput = document.querySelector('#inputColor');
   newTask.title = taskInput.value;
   newTask.text = textInput.value;
-  newTask.priority = lowPriorityInput.value;
-  newTask.priority = mediumPriorityInput.value;
-  newTask.priority = HighPriorityInput.value;
+  const newPriority = lowPriorityInput.checked ? lowPriorityInput.value :
+                    mediumPriorityInput.checked ? mediumPriorityInput.value :
+                    HighPriorityInput.checked ? HighPriorityInput.value :
+                    ''
+  newTask.priority = newPriority;
   newTask.highlight = colorInput.value;
 
   const { title, text, priority } = newTask;
