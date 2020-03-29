@@ -14,6 +14,7 @@ const initialTask = {
   priority: 'High',
   isCompleted: false,
   dateOfCreation: new Date(),
+  highlight: '#ffffff'
 }
 
 let tasks = [

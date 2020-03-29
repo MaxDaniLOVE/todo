@@ -10,6 +10,7 @@ const addTask = (e, tasks) => {
     priority: '',
     isCompleted: false,
     dateOfCreation: new Date(),
+    highlight: '#ffffff'
   }
   let newTask = {
     ...initialState
@@ -19,11 +20,13 @@ const addTask = (e, tasks) => {
   const lowPriorityInput = document.querySelector('#Low');
   const mediumPriorityInput = document.querySelector('#Medium');
   const HighPriorityInput = document.querySelector('#High');
+  const colorInput = document.querySelector('#inputColor');
   newTask.title = taskInput.value;
   newTask.text = textInput.value;
   newTask.priority = lowPriorityInput.value;
   newTask.priority = mediumPriorityInput.value;
   newTask.priority = HighPriorityInput.value;
+  newTask.highlight = colorInput.value;
 
   const { title, text, priority } = newTask;
   
