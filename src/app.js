@@ -3,6 +3,7 @@ import taskLayout from './js/taskLayot';
 import deleteItem from './js/deleteItem';
 import completeItem from './js/completeItem';
 import loadingJSON from './js/loadingJSON';
+import sort from './js/sort';
 import uniqid from 'uniqid';
 
 const initialTask = {
@@ -45,4 +46,13 @@ completedTasks.addEventListener('click', (e) => {
 
 document.getElementById('load-btn').addEventListener('click', (e) => {
   e.target.href = loadingJSON(tasks)
+})
+
+
+document.getElementById('nine-to-one').addEventListener('click', () => {
+  sort(tasks, -1)
+})
+
+document.getElementById('one-to-nine').addEventListener('click', () => {
+  sort(tasks, 1)
 })
