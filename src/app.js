@@ -47,7 +47,6 @@ currentTasksBlock.addEventListener('click', (e) => {
   }
   if (e.target.id === 'edit') {
     const editItem = getEditItem(e, tasks);
-    console.log(editItem);
     sessionStorage.setItem('isEditMode', true);
     sessionStorage.setItem('editItem', editItem.id);
     edit(editItem);

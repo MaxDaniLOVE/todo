@@ -34,23 +34,7 @@ const addTask = (e, tasks) => {
   const { title, text, priority } = newTask;
   if (title.length && text.length && priority.length) {
     taskLayout(newTask);
-    
-    if (sessionStorage.isEditMode) {
-      const itemId = sessionStorage.editItem;
-      const tasksIdx = tasks.findIndex(({id}) => id === itemId);
-      tasks.splice(tasksIdx, 1)
-      const newTasksArray = [
-        ...tasks.slice(0, tasksIdx),
-        newTask,
-        ...tasks.slice(tasksIdx)
-      ];
-      document.getElementById(itemId).remove();
-      tasksCounter(newTasksArray);
-      $('#exampleModal').modal('hide');
-      return newTasksArray;
-    }
-
-    const newTasksArray = [...tasks, newTask];
+    let newTasksArray = [...tasks, newTask];
     tasksCounter(newTasksArray);
     taskInput.value = '';
     textInput.value = '';
@@ -58,6 +42,21 @@ const addTask = (e, tasks) => {
     mediumPriorityInput.checked  = false;
     HighPriorityInput.checked  = false;
     colorInput.value = '#ffffff'
+    if (sessionStorage.isEditMode === 'true') {
+      const itemId = sessionStorage.editItem;
+      const tasksIdx = tasks.findIndex(({id}) => id === itemId);
+      tasks.splice(tasksIdx, 1)
+      newTasksArray = [
+        ...tasks.slice(0, tasksIdx),
+        newTask,
+        ...tasks.slice(tasksIdx)
+      ];
+      sessionStorage.isEditMode = false
+      document.getElementById(itemId).remove();
+      tasksCounter(newTasksArray);
+      $('#exampleModal').modal('hide');
+      return newTasksArray;
+    }
     $('#exampleModal').modal('hide');
     return newTasksArray;
   }
