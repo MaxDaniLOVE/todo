@@ -4,6 +4,7 @@ import deleteItem from './js/deleteItem';
 import completeItem from './js/completeItem';
 import loadingJSON from './js/loadingJSON';
 import sort from './js/sort';
+import tasksCounter from './js/tasksCounter';
 import uniqid from 'uniqid';
 
 const initialTask = {
@@ -56,3 +57,5 @@ document.getElementById('nine-to-one').addEventListener('click', () => {
 document.getElementById('one-to-nine').addEventListener('click', () => {
   sort(tasks, 1)
 })
+
+tasksCounter(tasks)

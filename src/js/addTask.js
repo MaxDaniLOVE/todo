@@ -1,4 +1,5 @@
 import taskLayout from './taskLayot';
+import tasksCounter from './tasksCounter';
 import uniqid from 'uniqid';
 
 const addTask = (e, tasks) => {
@@ -29,6 +30,7 @@ const addTask = (e, tasks) => {
   if (title.length && text.length && priority.length) {
     taskLayout(newTask);
     const newTasksArray = [...tasks, newTask];
+    tasksCounter(newTasksArray);
     taskInput.value = '';
     textInput.value = '';
     lowPriorityInput.checked  = false;

@@ -1,3 +1,5 @@
+import tasksCounter from './tasksCounter';
+
 const deleteItem = (e, tasks) => {
   const deletedItem = e.target.closest("li");
   const deletedItemId = deletedItem.id;
@@ -8,6 +10,7 @@ const deleteItem = (e, tasks) => {
     ...tasks.slice(idx)
   ];
   deletedItem.remove();
+  tasksCounter(newData);
   return newData;
 }
 
