@@ -5,6 +5,7 @@ import completeItem from './js/completeItem';
 import loadingJSON from './js/loadingJSON';
 import sort from './js/sort';
 import tasksCounter from './js/tasksCounter';
+import edit from './js/edit';
 import uniqid from 'uniqid';
 
 const initialTask = {
@@ -24,12 +25,18 @@ let tasks = [
 taskLayout(initialTask)
 
 document.querySelector('#add-task').addEventListener('click', (e) => {
-  e.preventDefault()
   tasks = addTask(e, tasks);
 })
 
 const currentTasksBlock = document.getElementById('currentTasks');
 const completedTasksBlock = document.getElementById('completedTasks');
+
+const getEditItem = (e, tasks) => {
+  const item = e.target.closest("li");
+  const itemId = item.id;
+  const tasksIdx = tasks.findIndex(({id}) => id === itemId);
+  return tasks[tasksIdx];
+}
 
 currentTasksBlock.addEventListener('click', (e) => {
   if (e.target.id === 'delete') {
@@ -38,9 +45,16 @@ currentTasksBlock.addEventListener('click', (e) => {
   if (e.target.id === 'complete') {
     tasks = completeItem(e, tasks);
   }
+  if (e.target.id === 'edit') {
+    const editItem = getEditItem(e, tasks);
+    console.log(editItem);
+    sessionStorage.setItem('isEditMode', true);
+    sessionStorage.setItem('editItem', editItem.id);
+    edit(editItem);
+  }
 })
 
-completedTasks.addEventListener('click', (e) => {
+completedTasksBlock.addEventListener('click', (e) => {
   if (e.target.id === 'delete') {
     tasks = deleteItem(e, tasks);
   }

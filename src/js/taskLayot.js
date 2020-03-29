@@ -22,7 +22,7 @@ const taskLayout = (task) => {
             </button>
             <div class="dropdown-menu p-2 flex-column" aria-labelledby="dropdownMenuItem1">
                 <button type="button" class="btn btn-success w-100 ${btnsVisibilityClass}" id="complete">Complete</button>
-                <button type="button" class="btn btn-info w-100 my-2 ${btnsVisibilityClass}" id="edit">Edit</button>
+                <button type="button" class="btn btn-info w-100 my-2 ${btnsVisibilityClass}" id="edit" data-toggle="modal" data-target="#exampleModal">Edit</button>
                 <button type="button" class="btn btn-danger w-100" id="delete">Delete</button>
             </div>
         </div>

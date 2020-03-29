@@ -3,6 +3,7 @@ import tasksCounter from './tasksCounter';
 import uniqid from 'uniqid';
 
 const addTask = (e, tasks) => {
+  e.preventDefault()
   const initialState = {
     id: uniqid(),
     title: '',
@@ -21,6 +22,7 @@ const addTask = (e, tasks) => {
   const mediumPriorityInput = document.querySelector('#Medium');
   const HighPriorityInput = document.querySelector('#High');
   const colorInput = document.querySelector('#inputColor');
+
   newTask.title = taskInput.value;
   newTask.text = textInput.value;
   const newPriority = lowPriorityInput.checked ? lowPriorityInput.value :
@@ -29,11 +31,25 @@ const addTask = (e, tasks) => {
                     ''
   newTask.priority = newPriority;
   newTask.highlight = colorInput.value;
-
   const { title, text, priority } = newTask;
-  
   if (title.length && text.length && priority.length) {
     taskLayout(newTask);
+    
+    if (sessionStorage.isEditMode) {
+      const itemId = sessionStorage.editItem;
+      const tasksIdx = tasks.findIndex(({id}) => id === itemId);
+      tasks.splice(tasksIdx, 1)
+      const newTasksArray = [
+        ...tasks.slice(0, tasksIdx),
+        newTask,
+        ...tasks.slice(tasksIdx)
+      ];
+      document.getElementById(itemId).remove();
+      tasksCounter(newTasksArray);
+      $('#exampleModal').modal('hide');
+      return newTasksArray;
+    }
+
     const newTasksArray = [...tasks, newTask];
     tasksCounter(newTasksArray);
     taskInput.value = '';
@@ -41,9 +57,7 @@ const addTask = (e, tasks) => {
     lowPriorityInput.checked  = false;
     mediumPriorityInput.checked  = false;
     HighPriorityInput.checked  = false;
-    newTask = {
-      ...initialState
-    }
+    colorInput.value = '#ffffff'
     $('#exampleModal').modal('hide');
     return newTasksArray;
   }
