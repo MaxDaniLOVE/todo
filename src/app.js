@@ -9,6 +9,8 @@ import edit from './js/edit';
 import nightTheme from './js/nightTheme';
 import uniqid from 'uniqid';
 
+sessionStorage.setItem('isNightTheme', false)
+
 const initialTask = {
   id: uniqid(),
   title: 'Title',
@@ -16,7 +18,7 @@ const initialTask = {
   priority: 'High',
   isCompleted: false,
   dateOfCreation: new Date(),
-  highlight: '#ffffff'
+  highlight: '#ffffff00'
 }
 
 let tasks = [

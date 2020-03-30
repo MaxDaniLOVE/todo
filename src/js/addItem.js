@@ -11,7 +11,7 @@ const addItem = (e, tasks) => {
     priority: '',
     isCompleted: false,
     dateOfCreation: new Date(),
-    highlight: '#ffffff'
+    highlight: '#ffffff00'
   }
   let newTask = {
     ...initialState
