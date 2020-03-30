@@ -2,7 +2,7 @@ import taskLayout from './taskLayot';
 import tasksCounter from './tasksCounter';
 import uniqid from 'uniqid';
 
-const addTask = (e, tasks) => {
+const addItem = (e, tasks) => {
   e.preventDefault()
   const initialState = {
     id: uniqid(),
@@ -62,4 +62,4 @@ const addTask = (e, tasks) => {
   }
 }
 
-export default addTask;
+export default addItem;

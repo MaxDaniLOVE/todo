@@ -1,4 +1,4 @@
-import addTask from './js/addTask';
+import addItem from './js/addItem';
 import taskLayout from './js/taskLayot';
 import deleteItem from './js/deleteItem';
 import completeItem from './js/completeItem';
@@ -25,7 +25,7 @@ let tasks = [
 taskLayout(initialTask)
 
 document.querySelector('#add-task').addEventListener('click', (e) => {
-  tasks = addTask(e, tasks);
+  tasks = addItem(e, tasks);
 })
 
 const currentTasksBlock = document.getElementById('currentTasks');
