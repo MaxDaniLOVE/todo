@@ -4,10 +4,12 @@ const nightTheme = (isNightTheme) => {
   const allListItems = document.querySelectorAll('.list-group-item');
   const allDropDownMenus = document.querySelectorAll('.dropdown-menu');
   const modal = document.querySelector('.modal-content');
-
+  const label = document.querySelector('.custom-control-label')
+  console.log(label)
   if (isNightTheme) {
     body.classList.add('bg-dark');
-    body.style.color = '#fff'
+    body.style.color = '#fff';
+    label.style.color = '#fff';
     navBar.classList.remove('bg-light');
     navBar.classList.add('bg-grey');
     allListItems.forEach(item => {
@@ -23,7 +25,8 @@ const nightTheme = (isNightTheme) => {
     sessionStorage.setItem('isNightTheme', true);
   } else {
     body.classList.remove('bg-dark');
-    body.style.color = '#000'
+    body.style.color = '#000';
+    label.style.color = '#000';
     navBar.classList.add('bg-light');
     navBar.classList.remove('bg-grey');
     allListItems.forEach(item => {
