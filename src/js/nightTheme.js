@@ -5,7 +5,6 @@ const nightTheme = (isNightTheme) => {
   const allDropDownMenus = document.querySelectorAll('.dropdown-menu');
   const modal = document.querySelector('.modal-content');
   const label = document.querySelector('.custom-control-label')
-  console.log(label)
   if (isNightTheme) {
     body.classList.add('bg-dark');
     body.style.color = '#fff';

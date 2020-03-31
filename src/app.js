@@ -63,11 +63,6 @@ completedTasksBlock.addEventListener('click', (e) => {
   }
 })
 
-document.getElementById('load-btn').addEventListener('click', (e) => {
-  e.target.href = loadingJSON(tasks)
-})
-
-
 document.getElementById('nine-to-one').addEventListener('click', () => {
   sort(tasks, -1)
 })
@@ -93,6 +88,10 @@ modal.addEventListener('click', (e) => {
       resetValues();
       sessionStorage.isEditMode = false;
   }
+})
+
+document.getElementById('load-btn').addEventListener('click', (e) => {
+  e.target.href = loadingJSON(tasks)
 })
 
 tasksCounter(tasks)
