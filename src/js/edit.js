@@ -23,7 +23,7 @@ const edit = (item) => {
     default:
       break;
   }
-  colorInput.value = highlight;
+  colorInput.value = highlight === '#ffffff00' ? '#ffffff' : highlight;
 }
 
 export default edit;

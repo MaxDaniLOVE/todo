@@ -1,5 +1,6 @@
 import taskLayout from './taskLayot';
 import tasksCounter from './tasksCounter';
+import resetValues from './resetValues';
 import uniqid from 'uniqid';
 
 const addItem = (e, tasks) => {
@@ -36,12 +37,7 @@ const addItem = (e, tasks) => {
     taskLayout(newTask);
     let newTasksArray = [...tasks, newTask];
     tasksCounter(newTasksArray);
-    taskInput.value = '';
-    textInput.value = '';
-    lowPriorityInput.checked  = false;
-    mediumPriorityInput.checked  = false;
-    HighPriorityInput.checked  = false;
-    colorInput.value = '#ffffff'
+    resetValues();
     if (sessionStorage.isEditMode === 'true') {
       const itemId = sessionStorage.editItem;
       const tasksIdx = tasks.findIndex(({id}) => id === itemId);

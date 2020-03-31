@@ -8,6 +8,7 @@ import tasksCounter from './js/tasksCounter';
 import edit from './js/edit';
 import nightTheme from './js/nightTheme';
 import uniqid from 'uniqid';
+import resetValues from './js/resetValues';
 
 sessionStorage.setItem('isNightTheme', false)
 
@@ -77,6 +78,21 @@ document.getElementById('one-to-nine').addEventListener('click', () => {
 
 document.getElementById('night-theme').addEventListener('change', (e) => {
   nightTheme(e.target.checked)
+})
+
+const modal = document.querySelector('.modal');
+const closeModal = document.getElementById('close-modal');
+const close = document.querySelector('.close');
+
+modal.addEventListener('click', (e) => {
+  if (e.target === modal
+    || e.target === closeModal
+    || e.target === close
+    || e.target === close.querySelector('span')
+    ) {
+      resetValues();
+      sessionStorage.isEditMode = false;
+  }
 })
 
 tasksCounter(tasks)
