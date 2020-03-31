@@ -55,6 +55,8 @@ const addItem = (e, tasks) => {
     }
     $('#exampleModal').modal('hide');
     return newTasksArray;
+  } else {
+    return tasks
   }
 }
 
